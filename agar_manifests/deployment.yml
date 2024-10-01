@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: agar-deployment
+  labels:
+    app: agar-clone
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: agar-clone
+  template:
+    metadata:
+      labels:
+        app: agar-clone
+    spec:
+      containers:
+      - name: agar
+        image: eddyachie1/agar-clone-master:latest
+        ports:
+        - containerPort: 3000
